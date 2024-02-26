@@ -250,7 +250,7 @@ header {
 }
 
 .business-section {
-  padding: 188px 0;
+  padding: 72px 0;
   margin: 0 auto;
   background-image: linear-gradient(
       rgba(46, 47, 66, 0.7),
@@ -260,7 +260,7 @@ header {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  max-width: 1440px;
+
   background-color: #2e2f42;
 }
 
@@ -285,8 +285,9 @@ header {
   }
 }
 
-@media (min-resolution: 192dpi) {
+@media only screen and (min-width: 768px) and (min-resolution: 192dpi) {
   .business-section {
+    padding: 112px 0;
     background-image: linear-gradient(
         rgba(46, 47, 66, 0.7),
         rgba(46, 47, 66, 0.7)
@@ -312,13 +313,13 @@ header {
   }
 }
 
-@media (min-resolution: 192dpi) {
+@media only screen and (min-width: 1158px) and (min-resolution: 192dpi) {
   .business-section {
     background-image: linear-gradient(
         rgba(46, 47, 66, 0.7),
         rgba(46, 47, 66, 0.7)
       ),
-      url("../images/people-office\ 1Desk@2x.jpg");
+      url("../images/people-office@2x.jpg");
   }
 }
 
@@ -825,6 +826,7 @@ header {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: flex-start;
     align-items: baseline;
     padding-left: 108px;
     padding-right: 108px;
@@ -837,7 +839,7 @@ header {
     align-items: baseline;
     flex-wrap: nowrap;
     flex-direction: row;
-    justify-content: flex-end;
+    padding: 0 15px;
   }
 }
 
@@ -851,6 +853,8 @@ header {
   .logo-container-footer {
     display: flex;
     flex-wrap: wrap;
+    margin-left: 0;
+    margin-right: 24px;
     width: 264px;
   }
 }
@@ -858,6 +862,8 @@ header {
 @media only screen and (min-width: 1158px) {
   .logo-container-footer {
     margin-right: 120px;
+    margin-left: 0;
+    margin-bottom: 0;
   }
 }
 
@@ -916,6 +922,12 @@ header {
   display: flex;
   flex-direction: column;
   margin-bottom: 72px;
+}
+
+@media only screen and (min-width: 1158px) {
+  .social-media-container {
+    margin-bottom: 0;
+  }
 }
 
 .title-social-media-footer {
@@ -992,7 +1004,6 @@ header {
 .subscribe-form {
   display: block;
   flex-direction: column;
-  margin-bottom: 16px;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
@@ -1024,7 +1035,6 @@ header {
     display: flex;
     flex-direction: column;
     align-items: baseline;
-    margin-right: 20px;
   }
 
   .subscribe-paragraph {
@@ -1043,24 +1053,9 @@ header {
     align-items: baseline;
     max-width: 453px;
     width: 100%;
-  }
-
-  .subscribe-paragraph {
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-    max-width: 453px;
-    width: 100%;
-  }
-}
-
-@media only screen and (min-width: 1158px) {
-  .form-subscribe {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+    margin-right: 0;
+    margin-bottom: 0;
     margin-left: 80px;
-    align-items: left;
   }
 }
 
@@ -1070,6 +1065,16 @@ header {
     flex-direction: row;
     gap: 24px;
     align-items: baseline;
+  }
+}
+
+@media only screen and (min-width: 1158px) {
+  .form-subscribe {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    align-items: left;
+    margin-bottom: 0;
   }
 }
 
@@ -1090,6 +1095,7 @@ header {
 
 @media only screen and (min-width: 1158px) {
   .form-input {
+    margin-bottom: 0;
     padding-left: 16px;
   }
 }
@@ -1124,7 +1130,7 @@ header {
 }
 /* Modal form */
 .backdrop {
-  opacity: 1;
+  opacity: 0;
   visibility: hidden;
   pointer-events: none;
   position: fixed;
@@ -1137,6 +1143,12 @@ header {
   background-color: rgba(46, 47, 66, 0.4);
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
     visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: initial;
 }
 
 .modal {
@@ -1365,15 +1377,21 @@ input[type="checkbox"]:checked + .label-agreement .checkbox-agreement {
 }
 
 /* Mobile menu */
-.mobile-menu.is-open {
+.mobile-menu {
   background: #fff;
   position: fixed;
   top: 0;
   left: 0;
-  width: 320px;
-  height: 640px;
+  width: 100%;
+  height: 100%;
   z-index: 1000;
   padding: 72px 24px 40px 16px;
+  transform: translateX(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-menu.is-open {
+  transform: translateX(0);
 }
 
 .mobile-menu.is-open .mobile-menu-btn {
